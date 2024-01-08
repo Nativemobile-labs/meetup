@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "918724597255",
+    "project_id": "meetup-c7331",
+    "storage_bucket": "meetup-c7331.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918724597255:android:22ad832c88d7044d9c7ca2",
+        "android_client_info": {
+          "package_name": "com.treat.meets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918724597255-2ki21avnhqr908svjn12ju6jni7uaoeq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuoeyaCpOO1RL7a3-1glCcthC-Sr3knWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918724597255-2ki21avnhqr908svjn12ju6jni7uaoeq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "918724597255-5o4q0psnr073b7ll6rjtcj29hujpkoef.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.treat.meets"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918724597255:android:bc4dc5792fe9f4789c7ca2",
+        "android_client_info": {
+          "package_name": "io.twibs.twibs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918724597255-2ki21avnhqr908svjn12ju6jni7uaoeq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuoeyaCpOO1RL7a3-1glCcthC-Sr3knWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918724597255-2ki21avnhqr908svjn12ju6jni7uaoeq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "918724597255-5o4q0psnr073b7ll6rjtcj29hujpkoef.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.treat.meets"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

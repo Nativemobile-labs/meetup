@@ -1,0 +1,95 @@
+{
+  "expo": {
+    "name": "meetup",
+    "slug": "meetup",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "permissions": [
+      "INTERNET"
+    ],
+    "orientation": "portrait",
+    "icon": "./assets/cafe.png",
+    "userInterfaceStyle": "light",
+    "notification": {
+      "icon": "./assets/cafe.png",
+      "color": "#000000"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.treat.meets",
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Your description here for when the app is in use",
+        "NSLocationAlwaysUsageDescription": "Your description here for continuous location access",
+        "UIBackgroundModes": [
+          "fetch",
+          "remote-notification"
+        ]
+      }
+    },
+    "android": {
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE"
+      ],
+      "package": "com.treat.meets",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/cafe.png",
+        "backgroundColor": "#ffffff"
+      },
+      "googleServicesFile": "./google-services.json"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 32,
+            "targetSdkVersion": 32,
+            "buildToolsVersion": "32.0.0"
+          },
+          "ios": {
+            "deploymentTarget": "14.0",
+            "useFrameworks": "static"
+          }
+        }
+      ],
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsImpl": "mapbox",
+          "RNMapboxMapsDownloadToken": "sk.eyJ1Ijoic3FtLXByYWRlZXAiLCJhIjoiY2xwYXVpYWtnMGFhMjJqcXRsb3N2bzhvZCJ9.UNCaqHTwqW6I6oYQjYF04w"
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow meetup to use your location."
+        }
+      ]
+    ],
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/420b3714-ae3b-4ed0-b961-1972606d02e6"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "420b3714-ae3b-4ed0-b961-1972606d02e6"
+      }
+    }
+  }
+}
