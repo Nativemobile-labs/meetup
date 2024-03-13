@@ -7,13 +7,15 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "../state/hooks";
 import { setApiUser, setUserAuth } from "../features/user/user-slice"; //define types
 import { createUser, fetchUser } from "../lib/api/users";
 import { StatusBar } from "expo-status-bar";
+
+
 
 const LoginView: React.FC = ({ navigation }: any) => {
   const dispatch = useDispatch();
@@ -24,6 +26,7 @@ const LoginView: React.FC = ({ navigation }: any) => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [confirm, setConfirm] = useState<FirebaseAuthTypes.ConfirmationResult | null>(null);
   const [code, setCode] = useState("");
+
 
   // Handle login
   const onAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
@@ -39,9 +42,11 @@ const LoginView: React.FC = ({ navigation }: any) => {
     return auth().onAuthStateChanged(onAuthStateChanged);
   }, []);
 
+
   // Handle the button press
   async function signInWithPhoneNumber(phone: string) {
     const confirmation = await auth().signInWithPhoneNumber(phone);
+    console.log('confirmation',confirmation)
     setConfirm(confirmation);
   }
 
@@ -51,15 +56,17 @@ const LoginView: React.FC = ({ navigation }: any) => {
       return;
     }
     setIsSubmitting(true);
-    await signInWithPhoneNumber(`+1${phone}`);
+    await signInWithPhoneNumber(`+91${phone}`);
     setIsSubmitting(false);
   };
+
 
   // handle confirmation........
   const handleConfirm = async () => {
     try {
       const userCredential = await confirm!.confirm(code);
-      navigation.replace(auth().currentUser ? "Home" : "Signup");
+      navigation.replace(auth().currentUser ? "Home" : "Signup"); 
+      // navigation.replace("Signup"); 
       if (!userCredential) {
         return;
       }
@@ -76,11 +83,12 @@ const LoginView: React.FC = ({ navigation }: any) => {
       dispatch(setApiUser(appuser));
 
       if (appuser.status === "created") {
-        navigation.push("Login");
+        navigation.push("Signup");
       } else {
         const appuser = await fetchUser();
         dispatch(setApiUser(appuser));
-        navigation.replace(auth().currentUser ? "Home" : "Signup");
+        navigation.replace(auth().currentUser ? "Home" : "Signup"); 
+        // navigation.replace("Home"); 
       }
       console.log(user);
     } catch (error) {

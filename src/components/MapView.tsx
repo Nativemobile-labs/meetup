@@ -139,6 +139,7 @@ const MapView: React.FC<MapViewProps> = ({ data }: any) => {
                   >
                     <View style={{ flex: 1 }}>
                       {post.name.Image !== null ? (
+                        <>
                         <Image
                           source={{ uri: post?.name.Image }}
                           style={{
@@ -150,6 +151,8 @@ const MapView: React.FC<MapViewProps> = ({ data }: any) => {
                             borderColor: "gray",
                           }}
                         />
+                        <Text>{post.name.Note}</Text>
+                        </>
                       ) : null}
                     </View>
                   </MapboxGL.PointAnnotation>

@@ -1,3 +1,76 @@
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  SafeAreaView,
+  Platform,
+  TouchableOpacity,
+  FlatList
+} from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+
+const NotificationView = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [data, setData] = useState<string>('');
+
+  useEffect(() => {
+    const fetchNotificationData = async () => {
+      await axios
+      .get('https://api.escuelajs.co/api/v1/products')
+      .then(function (response) {
+        setData(response.data)
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      })
+      .finally(function () {
+        console.log('Finally called');
+      });
+    };
+    fetchNotificationData();
+  },[])
+
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+      {!loading ? (
+        <View style={{ flex: 1, justifyContent: "center" }}>
+          <ActivityIndicator size={"large"} color={"orange"} />
+        </View>
+      ) : (
+        <View
+          style={{ flex: 1, backgroundColor: "silver", marginHorizontal: 10 }}
+        >
+          <View>
+            <Text>here is notification list</Text>
+            <FlatList 
+            data={data}
+            keyExtractor={(item) => item}
+            
+            />
+          </View>
+          <TouchableOpacity
+          onPress={() => alert('clear all Notification')}
+            style={{
+              backgroundColor: "grey",
+              padding: 2,
+              width: 70,
+              position: "absolute",
+              right: 10,
+              top: 50,
+            }}
+          >
+            <Text style={{ color: "red" }}>Clear All</Text>
+          </TouchableOpacity>
+        </View>
+      )}
+    </SafeAreaView>
+  );
+};
+
+export default NotificationView;
+
 // import {
 //         View,
 //         Text,
@@ -9,7 +82,7 @@
 //       import React, { useState, useEffect, useRef } from "react";
 //       import * as Notifications from "expo-notifications";
 //       import * as Device from "expo-device";
-//       import Constants from 'expo-constants'; 
+//       import Constants from 'expo-constants';
 
 //       Notifications.setNotificationHandler({
 //         handleNotification: async () => ({
@@ -18,18 +91,18 @@
 //           shouldSetBadge: false,
 //         }),
 //       });
-      
+
 //       const NotificationView = () => {
 //         const [loading, setLoading] = useState<boolean>(true);
 //         const [expoPushToken, setExpoPushToken] = useState<string | null>(null);
 //         const [notification, setNotification] = useState<Notifications.Notification>();
 //         const notificationListener = useRef<Notifications.Subscription>();
 //         const responseListener = useRef<Notifications.Subscription>();
-      
+
 //         useEffect(() => {
 //           const registerForPushNotificationsAsync = async () => {
 //             let token;
-      
+
 //             if (Platform.OS === "android") {
 //               await Notifications.setNotificationChannelAsync("default", {
 //                 name: "default",
@@ -38,21 +111,21 @@
 //                 lightColor: "#FF231F7C",
 //               });
 //             }
-      
+
 //             if (Device.isDevice) {
 //               const { status: existingStatus } = await Notifications.getPermissionsAsync();
 //               let finalStatus = existingStatus;
-      
+
 //               if (existingStatus !== "granted") {
 //                 const { status } = await Notifications.requestPermissionsAsync();
 //                 finalStatus = status;
 //               }
-      
+
 //               if (finalStatus !== "granted") {
 //                 alert("Failed to get push token for push notification!");
 //                 return;
 //               }
-      
+
 //               // Explicitly provide the projectId
 //               const expoPushToken = await Notifications.getExpoPushTokenAsync({
 //                 projectId: Constants.expoConfig.extra.eas.projectId, // Replace with your actual project ID
@@ -63,21 +136,21 @@
 //             } else {
 //               alert("Must use physical device for Push Notifications");
 //             }
-      
+
 //             return token;
 //           };
-      
+
 //           registerForPushNotificationsAsync();
-      
+
 //           notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
 //             console.log('notification is received', notification);
 //             setNotification(notification);
 //           });
-      
+
 //           responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
 //             console.log('response', response);
 //           });
-      
+
 //           return () => {
 //             if (notificationListener.current) {
 //               Notifications.removeNotificationSubscription(notificationListener.current);
@@ -87,7 +160,7 @@
 //             }
 //           };
 //         }, []);
-      
+
 //         const schedulePushNotification = async () => {
 //           await Notifications.scheduleNotificationAsync({
 //             content: {
@@ -126,17 +199,5 @@
 //           </SafeAreaView>
 //         );
 //       };
-      
+
 //       export default NotificationView;
-      import { View, Text } from 'react-native'
-      import React from 'react'
-      
-      const NotificationView = () => {
-        return (
-          <View>
-            <Text>NotificationView</Text>
-          </View>
-        )
-      }
-      
-      export default NotificationView

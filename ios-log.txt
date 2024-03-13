@@ -1,8 +1,0 @@
-info Found Xcode workspace "meetup.xcworkspace"
-info Found booted iPhone 14
-info Launching iPhone 14
-info Building (using "xcodebuild -workspace meetup.xcworkspace -configuration Debug -scheme meetup -destination id=EB1F1F82-8C29-4F4B-9D61-E9385913A2E5")
-success Successfully built the app
-info Installing "/Users/squadminds/Library/Developer/Xcode/DerivedData/meetup-bijhbpqvrzxmimcjrtsikqdltvun/Build/Products/Debug-iphonesimulator/meetup.app on iPhone 14"
-info Launching "com.treat.meets"
-success Successfully launched the app on the simulator
